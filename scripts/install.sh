@@ -11,6 +11,11 @@ create_container() {
     --features nesting=$NESTED
 }
 
+prepare_config_folder() {
+    mkdir /apps/$APP
+    pct set $CTID -mp0 /apps/$APP,mp=/docker/$APP
+}
+
 prepare_container() {
     pct start $CTID
     sleep 10
@@ -25,7 +30,7 @@ install_docker() {
     pct exec $CTID -- service docker start
 }
 
-prepare_app() {
+prepare_docker_app() {
     pct exec $CTID -- curl -o compose.yaml https://raw.githubusercontent.com/DawidDe/Proxmox-Scripts/refs/heads/master/compose/$APP.yaml
     pct exec $CTID -- curl -O https://raw.githubusercontent.com/DawidDe/Proxmox-Scripts/refs/heads/master/compose/up.sh
     pct exec $CTID -- curl -O https://raw.githubusercontent.com/DawidDe/Proxmox-Scripts/refs/heads/master/compose/down.sh
