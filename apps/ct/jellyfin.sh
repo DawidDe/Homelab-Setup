@@ -1,23 +1,32 @@
 # source install script
 source <(curl -s https://raw.githubusercontent.com/DawidDe/Proxmox-Scripts/refs/heads/master/scripts/install.sh)
 
+prepare_media_folder() {
+    mkdir /media
+    chown 100000:100000 /media
+    chmod 755 /media
+    pct set $CTID -mp0 /media,mp=/docker/$APP/media
+}
+
 # Some important variables
-APP="vaultwarden"
-CTID="102"
+APP="jellyfin"
+CTID="103"
 TEMPLATE="alpine-3.21-default_20241217_amd64.tar.xz"
 CPU_CORES="1"
-RAM_SIZE="1024"
-DISK_SIZE="5"
-IP="192.168.178.3/24"
+RAM_SIZE="2048"
+DISK_SIZE="10"
+IP="192.168.178.5/24"
 GATEWAY="192.168.178.1"
 ROOT_PASSWORD="dawid"
-HOSTNAME="vaultwarden"
+HOSTNAME="jellyfin"
 UNPRIVILEGED=""
 NESTED="1"
 
 create_container
 
 prepare_config_folder
+
+prepare_media_folder
 
 prepare_container
 
