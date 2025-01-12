@@ -12,18 +12,21 @@ create_container() {
 }
 
 prepare_container() {
-    apk update
-    apk upgrade
-    apk add curl bash
+    pct start $CTID
+    sleep 10
+    pct exec $CTID -- apk update
+    pct exec $CTID -- apk upgrade
+    pct exec $CTID -- apk add curl bash
 }
 
 install_docker() {
-    apk add docker docker-compose
+    pct exec $CTID -- apk add docker docker-compose
 }
 
 prepare_app() {
-    curl -o compose.yaml https://raw.githubusercontent.com/DawidDe/Proxmox-Scripts/refs/heads/master/compose/$APP.sh
-    curl -O https://raw.githubusercontent.com/DawidDe/Proxmox-Scripts/refs/heads/master/compose/up.sh
-    curl -O https://raw.githubusercontent.com/DawidDe/Proxmox-Scripts/refs/heads/master/compose/down.sh
-    chmod +x up.sh down.sh
+    pct exec $CTID -- curl -o compose.yaml https://raw.githubusercontent.com/DawidDe/Proxmox-Scripts/refs/heads/master/compose/$APP.sh
+    pct exec $CTID -- curl -O https://raw.githubusercontent.com/DawidDe/Proxmox-Scripts/refs/heads/master/compose/up.sh
+    pct exec $CTID -- curl -O https://raw.githubusercontent.com/DawidDe/Proxmox-Scripts/refs/heads/master/compose/down.sh
+    pct exec $CTID -- chmod +x up.sh down.sh
+    pct exec $CTID -- ./up.sh
 }
