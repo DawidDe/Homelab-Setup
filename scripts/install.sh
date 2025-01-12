@@ -1,6 +1,6 @@
 
 create_container() {
-    pct create $CTID $TEMPLATE \
+    pct create $CTID /var/lib/vz/template/cache/$TEMPLATE \
     --cores $CPU_CORES \
     --memory $RAM_SIZE \
     --rootfs local-lvm:$DISK_SIZE \
