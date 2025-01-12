@@ -1,4 +1,5 @@
-
+# source install script
+source <(curl -s https://raw.githubusercontent.com/DawidDe/Proxmox-Scripts/refs/heads/master/scripts/install.sh)
 
 # Some important variables
 TYPE="docker"
@@ -19,5 +20,4 @@ prepare_os_docker
 
 create_lxc_container
 
-# Create a new container
-create_lxc_container
+docker_preparation

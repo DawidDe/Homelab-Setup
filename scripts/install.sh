@@ -1,5 +1,4 @@
 
-
 prepare_os_docker() {
     apk update
     apk upgrade
@@ -24,5 +23,8 @@ create_lxc_container() {
 }
 
 docker_preparation() {
-    
+    curl -o compose.yaml https://raw.githubusercontent.com/DawidDe/Proxmox-Scripts/refs/heads/master/compose/$APP.sh
+    curl -O https://raw.githubusercontent.com/DawidDe/Proxmox-Scripts/refs/heads/master/compose/up.sh
+    curl -O https://raw.githubusercontent.com/DawidDe/Proxmox-Scripts/refs/heads/master/compose/down.sh
+    chmod +x up.sh down.sh
 }
