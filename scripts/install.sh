@@ -21,6 +21,8 @@ prepare_container() {
 
 install_docker() {
     pct exec $CTID -- apk add docker docker-compose
+    pct exec $CTID -- rc-update add docker boot
+    pct exec $CTID -- service docker start
 }
 
 prepare_app() {
