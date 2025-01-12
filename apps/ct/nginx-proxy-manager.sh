@@ -14,7 +14,7 @@ GATEWAY="192.168.178.1"
 ROOT_PASSWORD="dawid"
 HOSTNAME="npm"
 UNPRIVILEGED=""
-NESTED=""
+NESTED="1"
 
 create_container
 
