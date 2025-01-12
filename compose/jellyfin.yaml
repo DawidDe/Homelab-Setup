@@ -1,0 +1,25 @@
+services:
+  jellyfin:
+    image: jellyfin/jellyfin:latest
+    container_name: jellyfin
+    restart: unless-stopped
+    ports:
+      - "8096:8096"
+      - "8920:8920"
+    environment:
+      - JELLYFIN_PublishedServerUrl=https://jellyfin.dawidde.de
+    volumes:
+      - /docker/jellyfin/config:/config
+      - /docker/jellyfin/cachecache:/cache
+      - type: bind
+        source: /docker/jellyfin/media/movies
+        target: /media/movies
+        read_only: true
+      - type: bind
+        source: /docker/jellyfin/media/shows
+        target: /media/shows
+        read_only: true
+      - type: bind
+        source: /docker/jellyfin/media/anime
+        target: /media/anime
+        read_only: true
