@@ -16,8 +16,10 @@ HOSTNAME="npm"
 UNPRIVILEGED=""
 NESTED=""
 
-prepare_os_docker
+create_container
 
-create_lxc_container
+prepare_container
 
-docker_preparation
+install_docker
+
+prepare_app

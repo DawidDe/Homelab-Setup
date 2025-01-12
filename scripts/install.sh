@@ -1,16 +1,5 @@
 
-prepare_os_docker() {
-    apk update
-    apk upgrade
-    apk add docker docker-compose curl
-}
-
-prepare_os() {
-    apk update
-    apk upgrade
-}
-
-create_lxc_container() {
+create_container() {
     pct create $CTID $TEMPLATE \
     --cores $CPU_CORES \
     --memory $RAM_SIZE \
@@ -22,7 +11,17 @@ create_lxc_container() {
     --features nesting=$NESTED
 }
 
-docker_preparation() {
+prepare_container() {
+    apk update
+    apk upgrade
+    apk add curl bash
+}
+
+install_docker() {
+    apk add docker docker-compose
+}
+
+prepare_app() {
     curl -o compose.yaml https://raw.githubusercontent.com/DawidDe/Proxmox-Scripts/refs/heads/master/compose/$APP.sh
     curl -O https://raw.githubusercontent.com/DawidDe/Proxmox-Scripts/refs/heads/master/compose/up.sh
     curl -O https://raw.githubusercontent.com/DawidDe/Proxmox-Scripts/refs/heads/master/compose/down.sh
