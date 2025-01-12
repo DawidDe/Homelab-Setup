@@ -13,6 +13,8 @@ create_container() {
 
 prepare_config_folder() {
     mkdir /apps/$APP
+    chown 100000:100000 /apps/$APP
+    chmod 755 /apps/$APP
     pct set $CTID -mp0 /apps/$APP,mp=/docker/$APP
 }
 
