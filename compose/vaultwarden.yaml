@@ -1,0 +1,12 @@
+services:
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: vaultwarden
+    restart: unless-stopped
+    ports:
+      - 80:80
+    environment:
+      DOMAIN: "https://vaulwarden.dawidde.de"
+      ADMIN_TOKEN:
+    volumes:
+      - /docker/vaultwarden/data:/data
