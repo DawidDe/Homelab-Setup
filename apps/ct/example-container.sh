@@ -24,3 +24,5 @@ prepare_container
 install_docker
 
 prepare_docker_app
+
+start_docker_app

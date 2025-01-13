@@ -37,5 +37,8 @@ prepare_docker_app() {
     pct exec $CTID -- curl -O https://raw.githubusercontent.com/DawidDe/Proxmox-Scripts/refs/heads/master/compose/up.sh
     pct exec $CTID -- curl -O https://raw.githubusercontent.com/DawidDe/Proxmox-Scripts/refs/heads/master/compose/down.sh
     pct exec $CTID -- chmod +x up.sh down.sh
+}
+
+start_docker_app() {
     pct exec $CTID -- ./up.sh
 }
