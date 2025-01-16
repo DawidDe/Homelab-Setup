@@ -1,4 +1,3 @@
-
 curl -O https://raw.githubusercontent.com/DawidDe/Proxmox-Scripts/refs/heads/master/apps/ct/nginx-proxy-manager.sh
 bash nginx-proxy-manager.sh
 rm nginx-proxy-manager.sh

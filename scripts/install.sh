@@ -35,7 +35,9 @@ prepare_docker_app() {
     pct exec $CTID -- curl -o compose.yaml https://raw.githubusercontent.com/DawidDe/Proxmox-Scripts/refs/heads/master/compose/$APP.yaml
     pct exec $CTID -- curl -O https://raw.githubusercontent.com/DawidDe/Proxmox-Scripts/refs/heads/master/scripts/up.sh
     pct exec $CTID -- curl -O https://raw.githubusercontent.com/DawidDe/Proxmox-Scripts/refs/heads/master/scripts/down.sh
-    pct exec $CTID -- chmod +x up.sh down.sh
+    pct exec $CTID -- curl -O https://raw.githubusercontent.com/DawidDe/Proxmox-Scripts/refs/heads/master/scripts/update-docker.sh
+    pct exec $CTID -- chmod +x up.sh down.sh update-docker.sh
+    pct exec $CTID -- echo "0 0 * * * /root/update-docker.sh" | crontab -
 }
 
 start_docker_app() {
