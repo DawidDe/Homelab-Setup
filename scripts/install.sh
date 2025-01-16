@@ -21,7 +21,8 @@ prepare_config_folder() {
 prepare_container() {
     pct start $CTID
     sleep 10
-    pct exec $CTID -- apk upgrade --update && apk add curl bash
+    pct exec $CTID -- apk upgrade --update
+    pct exec $CTID -- apk add curl bash
 }
 
 install_docker() {
