@@ -3,12 +3,12 @@ source <(curl -s https://raw.githubusercontent.com/DawidDe/Proxmox-Scripts/refs/
 
 # Some important variables
 APP="vaultwarden"
-CTID="102"
+CTID="101"
 TEMPLATE="alpine-3.21-default_20241217_amd64.tar.xz"
 CPU_CORES="1"
 RAM_SIZE="512"
 DISK_SIZE="1"
-IP="192.168.178.3/24"
+IP="192.168.178.2/24"
 GATEWAY="192.168.178.1"
 ROOT_PASSWORD="dawid"
 HOSTNAME="vaultwarden"

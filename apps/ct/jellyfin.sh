@@ -10,12 +10,12 @@ prepare_media_folder() {
 
 # Some important variables
 APP="jellyfin"
-CTID="103"
+CTID="102"
 TEMPLATE="alpine-3.21-default_20241217_amd64.tar.xz"
 CPU_CORES="1"
 RAM_SIZE="2048"
 DISK_SIZE="10"
-IP="192.168.178.5/24"
+IP="192.168.178.3/24"
 GATEWAY="192.168.178.1"
 ROOT_PASSWORD="dawid"
 HOSTNAME="jellyfin"
