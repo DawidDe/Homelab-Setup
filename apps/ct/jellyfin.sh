@@ -5,6 +5,7 @@ prepare_media_folder() {
     mkdir /media
     chown 100000:100000 /media
     chmod 755 /media
+    pct exec $CTID -- mkdir /docker/$APP/media
     pct set $CTID -mp0 /media,mp=/docker/$APP/media
 }
 

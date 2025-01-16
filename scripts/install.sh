@@ -1,4 +1,3 @@
-
 create_container() {
     pct create $CTID /var/lib/vz/template/cache/$TEMPLATE \
     --cores $CPU_CORES \
