@@ -19,7 +19,7 @@ prepare_config_folder() {
 
 prepare_container() {
     pct start $CTID
-    sleep 10
+    sleep 5
     pct exec $CTID -- apk upgrade --update
     pct exec $CTID -- apk add curl bash
 }
@@ -28,7 +28,7 @@ install_docker() {
     pct exec $CTID -- apk add docker docker-compose
     pct exec $CTID -- rc-update add docker boot
     pct exec $CTID -- reboot now
-    sleep 10
+    sleep 5
 }
 
 prepare_docker_app() {
