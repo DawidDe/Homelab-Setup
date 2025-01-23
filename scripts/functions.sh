@@ -1,3 +1,34 @@
+# General System functions
+upgrade_system() {
+    apt update
+    apt upgrade -y
+}
+
+cleanup_system() {
+    apt autoremove -y
+    apt autoclean -y
+}
+
+enable_unattended_upgrades() {
+    apt install unattended-upgrades -y
+    dpkg-reconfigure --priority=low unattended-upgrades
+}
+
+harden_ssh() {
+    sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin no/' /etc/ssh/sshd_config
+    sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config
+    systemctl restart ssh
+}
+
+enable_ufw() {
+    apt install ufw -y
+    ufw allow 22
+    ufw allow 80
+    ufw allow 443
+    ufw enable
+}
+
+# LXC functions
 create_container() {
     pct create $CTID /var/lib/vz/template/cache/$TEMPLATE \
     --cores $CPU_CORES \
@@ -10,13 +41,6 @@ create_container() {
     --features nesting=$NESTED
 }
 
-prepare_config_folder() {
-    mkdir /apps/$APP
-    chown 100000:100000 /apps/$APP
-    chmod 755 /apps/$APP
-    pct set $CTID -mp0 /apps/$APP,mp=/docker/$APP
-}
-
 prepare_container() {
     pct start $CTID
     sleep 5
@@ -24,6 +48,7 @@ prepare_container() {
     pct exec $CTID -- apk add curl bash
 }
 
+# Docker functions
 install_docker() {
     pct exec $CTID -- apk add docker docker-compose
     pct exec $CTID -- rc-update add docker boot
@@ -42,4 +67,13 @@ prepare_docker_app() {
 
 start_docker_app() {
     pct exec $CTID -- ./up.sh
+}
+
+# App specific functions
+# Jellyfin functions
+prepare_config_folder() {
+    mkdir /apps/$APP
+    chown 100000:100000 /apps/$APP
+    chmod 755 /apps/$APP
+    pct set $CTID -mp0 /apps/$APP,mp=/docker/$APP
 }

@@ -1,5 +1,5 @@
 # source install script
-source <(curl -s https://raw.githubusercontent.com/DawidDe/Proxmox-Scripts/refs/heads/master/scripts/install.sh)
+source <(curl -s https://raw.githubusercontent.com/DawidDe/Proxmox-Scripts/refs/heads/master/scripts/functions.sh)
 
 # Some important variables
 APP=""

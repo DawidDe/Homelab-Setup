@@ -5,11 +5,11 @@ select option in "Proxmox-1" "Raspberry-1" "Quit"
 do
     case $option in
         "Proxmox-1")
-            echo "You chose Proxmox-1"
+            bash -c "$(wget -qLO - https://raw.githubusercontent.com/DawidDe/Proxmox-Scripts/refs/heads/master/scripts/proxmox-1.sh)"
             break
             ;;
         "Raspberry-1")
-            echo "You chose Raspberry-1"
+            bash -c "$(wget -qLO - https://raw.githubusercontent.com/DawidDe/Proxmox-Scripts/refs/heads/master/scripts/raspberry-1.sh)"
             break
             ;;
         "Quit")
